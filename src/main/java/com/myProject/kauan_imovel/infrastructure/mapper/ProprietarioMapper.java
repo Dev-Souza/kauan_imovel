@@ -4,7 +4,6 @@ import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPe
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
