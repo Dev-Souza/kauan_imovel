@@ -18,7 +18,7 @@ public class PessoaProprietarioController {
     }
 
     // CADASTRAR PESSOA PROPRIETARIA
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<Void> create(@RequestBody CadastrarPessoaProprietarioCommand command){
         cadastrarPessoaProprietarioHandler.handle(command);
         return ResponseEntity.ok().build();
