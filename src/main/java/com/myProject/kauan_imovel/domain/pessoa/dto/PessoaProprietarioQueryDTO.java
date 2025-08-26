@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.pessoa.query.dto;
+package com.myProject.kauan_imovel.domain.pessoa.dto;
 
 import java.time.LocalDate;
 

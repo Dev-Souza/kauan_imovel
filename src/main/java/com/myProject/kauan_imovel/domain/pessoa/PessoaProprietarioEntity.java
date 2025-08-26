@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.pessoa.domain;
+package com.myProject.kauan_imovel.domain.pessoa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

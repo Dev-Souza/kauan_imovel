@@ -1,8 +1,8 @@
-package com.myProject.kauan_imovel.utils.mapper;
+package com.myProject.kauan_imovel.infrastructure.mapper;
 
-import com.myProject.kauan_imovel.pessoa.command.command.CadastrarPessoaProprietarioCommand;
-import com.myProject.kauan_imovel.pessoa.domain.PessoaProprietarioEntity;
-import com.myProject.kauan_imovel.pessoa.query.dto.PessoaProprietarioQueryDTO;
+import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaProprietarioCommand;
+import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
+import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

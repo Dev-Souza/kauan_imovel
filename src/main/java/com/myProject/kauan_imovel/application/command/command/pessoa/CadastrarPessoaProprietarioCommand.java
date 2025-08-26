@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.pessoa.command.command;
+package com.myProject.kauan_imovel.application.command.command.pessoa;
 
 public record CadastrarPessoaProprietarioCommand(
         String nome,
