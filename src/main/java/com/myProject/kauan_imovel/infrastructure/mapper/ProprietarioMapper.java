@@ -10,8 +10,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ProprietarioMapper {
-    ProprietarioMapper INSTANCE = Mappers.getMapper(ProprietarioMapper.class);
-
     PessoaProprietarioEntity toEntity(CadastrarPessoaProprietarioCommand command);
     List<PessoaProprietarioEntity> toEntities(List<CadastrarPessoaProprietarioCommand> commands);
 
