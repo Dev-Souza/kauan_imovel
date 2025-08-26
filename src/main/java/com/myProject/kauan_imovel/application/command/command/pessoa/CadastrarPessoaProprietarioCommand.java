@@ -1,9 +1,13 @@
 package com.myProject.kauan_imovel.application.command.command.pessoa;
 
+import java.time.LocalDate;
+
 public record CadastrarPessoaProprietarioCommand(
         String nome,
         String cpf,
         String email,
-        String telefone
+        String telefone,
+        LocalDate dataCadastro,
+        String observacoes
 ) {
 }
