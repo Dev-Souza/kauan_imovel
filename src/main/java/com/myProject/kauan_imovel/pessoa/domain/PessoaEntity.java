@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.pessoa.command.domain;
+package com.myProject.kauan_imovel.pessoa.domain;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

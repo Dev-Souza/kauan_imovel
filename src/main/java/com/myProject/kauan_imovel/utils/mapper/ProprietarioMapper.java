@@ -1,7 +1,7 @@
 package com.myProject.kauan_imovel.utils.mapper;
 
 import com.myProject.kauan_imovel.pessoa.command.command.CadastrarPessoaProprietarioCommand;
-import com.myProject.kauan_imovel.pessoa.command.domain.PessoaProprietarioEntity;
+import com.myProject.kauan_imovel.pessoa.domain.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.pessoa.query.dto.PessoaProprietarioQueryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
