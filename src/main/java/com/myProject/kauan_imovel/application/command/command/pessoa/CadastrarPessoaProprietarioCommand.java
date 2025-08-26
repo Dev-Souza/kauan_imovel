@@ -10,4 +10,10 @@ public record CadastrarPessoaProprietarioCommand(
         LocalDate dataCadastro,
         String observacoes
 ) {
+    public static CadastrarPessoaProprietarioCommand comDataAtual(
+            String nome, String cpf, String email, String telefone, String observacoes
+    ) {
+        return new CadastrarPessoaProprietarioCommand(nome, cpf, email, telefone, LocalDate.now(), observacoes);
+    }
 }
+
