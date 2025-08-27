@@ -3,15 +3,38 @@ package com.myProject.kauan_imovel.infrastructure.mapper;
 import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaProprietarioCommand;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
-import org.mapstruct.Mapper;
 
-import java.util.List;
+import java.time.LocalDate;
 
-@Mapper(componentModel = "spring")
-public interface ProprietarioMapper {
-    PessoaProprietarioEntity toEntity(CadastrarPessoaProprietarioCommand command);
-    List<PessoaProprietarioEntity> toEntities(List<CadastrarPessoaProprietarioCommand> commands);
+public class ProprietarioMapper{
 
-    PessoaProprietarioQueryDTO toDTO(PessoaProprietarioEntity entity);
-    List<PessoaProprietarioQueryDTO> toDTOs(List<PessoaProprietarioEntity> entities);
+    public static PessoaProprietarioEntity toEntity(CadastrarPessoaProprietarioCommand cmd) {
+        if ( cmd == null ) {
+            return null;
+        }
+        PessoaProprietarioEntity entity = new PessoaProprietarioEntity();
+        entity.setNome(cmd.nome());
+        entity.setCpf(cmd.cpf());
+        entity.setEmail(cmd.email());
+        entity.setTelefone(cmd.telefone());
+        entity.setDataCadastro(LocalDate.now());
+        entity.setObservacoes(cmd.observacoes());
+        return entity;
+    }
+
+    public static PessoaProprietarioQueryDTO toQueryDTO(PessoaProprietarioEntity entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        return new PessoaProprietarioQueryDTO(
+                entity.getId(),
+                entity.getNome(),
+                entity.getCpf(),
+                entity.getEmail(),
+                entity.getTelefone(),
+                entity.getDataCadastro(),
+                entity.getObservacoes()
+        );
+    }
 }
