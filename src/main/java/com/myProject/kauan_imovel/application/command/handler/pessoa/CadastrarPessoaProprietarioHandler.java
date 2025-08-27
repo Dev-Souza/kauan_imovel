@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CadastrarPessoaProprietarioHandler {
     private final PessoaProprietarioRepository repository;
+    private final ProprietarioMapper mapper;
 
-    public CadastrarPessoaProprietarioHandler(PessoaProprietarioRepository repository) {
+    public CadastrarPessoaProprietarioHandler(PessoaProprietarioRepository repository, ProprietarioMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     public void handle(CadastrarPessoaProprietarioCommand command) {
-        PessoaProprietarioEntity proprietario = ProprietarioMapper.toEntity(command);
+        PessoaProprietarioEntity proprietario = mapper.toEntity(command);
         repository.save(proprietario);
     }
 }
