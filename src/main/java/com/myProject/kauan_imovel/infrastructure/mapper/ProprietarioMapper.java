@@ -3,12 +3,14 @@ package com.myProject.kauan_imovel.infrastructure.mapper;
 import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaProprietarioCommand;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@Component
 public class ProprietarioMapper{
 
-    public static PessoaProprietarioEntity toEntity(CadastrarPessoaProprietarioCommand cmd) {
+    public PessoaProprietarioEntity toEntity(CadastrarPessoaProprietarioCommand cmd) {
         if ( cmd == null ) {
             return null;
         }
