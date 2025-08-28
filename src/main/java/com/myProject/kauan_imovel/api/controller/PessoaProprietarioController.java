@@ -5,6 +5,7 @@ import com.myProject.kauan_imovel.application.command.command.pessoa.DeletePesso
 import com.myProject.kauan_imovel.application.command.handler.pessoa.AlterarPessoaProprietariaHandler;
 import com.myProject.kauan_imovel.application.command.handler.pessoa.CadastrarPessoaProprietarioHandler;
 import com.myProject.kauan_imovel.application.command.handler.pessoa.DeletePessoaProprietariaHandler;
+import com.myProject.kauan_imovel.application.query.handler.BuscarPessoaProprietariaPorId;
 import com.myProject.kauan_imovel.application.query.handler.BuscarTodasPessoasProprietariasHandler;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,15 @@ public class PessoaProprietarioController {
     private final CadastrarPessoaProprietarioHandler cadastrarPessoaProprietarioHandler;
     private final AlterarPessoaProprietariaHandler alterarPessoaProprietariaHandler;
     private final BuscarTodasPessoasProprietariasHandler buscarTodasPessoasProprietariasHandler;
+    private final BuscarPessoaProprietariaPorId buscarPessoaProprietariaPorId;
     private final DeletePessoaProprietariaHandler deletePessoaProprietariaHandler;
 
-    public PessoaProprietarioController(CadastrarPessoaProprietarioHandler cadastrarPessoaProprietarioHandler, DeletePessoaProprietariaHandler deletePessoaProprietariaHandler, BuscarTodasPessoasProprietariasHandler buscarTodasPessoasProprietariasHandler,  AlterarPessoaProprietariaHandler alterarPessoaProprietariaHandler) {
+    public PessoaProprietarioController(CadastrarPessoaProprietarioHandler cadastrarPessoaProprietarioHandler, DeletePessoaProprietariaHandler deletePessoaProprietariaHandler, BuscarTodasPessoasProprietariasHandler buscarTodasPessoasProprietariasHandler, AlterarPessoaProprietariaHandler alterarPessoaProprietariaHandler, BuscarPessoaProprietariaPorId buscarPessoaProprietariaPorId) {
         this.cadastrarPessoaProprietarioHandler = cadastrarPessoaProprietarioHandler;
         this.alterarPessoaProprietariaHandler = alterarPessoaProprietariaHandler;
         this.deletePessoaProprietariaHandler = deletePessoaProprietariaHandler;
         this.buscarTodasPessoasProprietariasHandler = buscarTodasPessoasProprietariasHandler;
+        this.buscarPessoaProprietariaPorId = buscarPessoaProprietariaPorId;
     }
 
     // CADASTRAR PESSOA PROPRIETARIA
@@ -37,6 +40,9 @@ public class PessoaProprietarioController {
     // BUSCAR TODAS AS PESSOAS PROPRIETÁRIAS
     @GetMapping("/listar")
     public ResponseEntity<List<PessoaProprietarioQueryDTO>> listar(){ return buscarTodasPessoasProprietariasHandler.handle(); }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<PessoaProprietarioQueryDTO> listarPorId(@PathVariable("id") Long id) { return ResponseEntity.ok(buscarPessoaProprietariaPorId.handle(id));}
 
     // ALTERAR PESSOA PROPRIETÁRIA
     @PutMapping("/alterar/{id}")
