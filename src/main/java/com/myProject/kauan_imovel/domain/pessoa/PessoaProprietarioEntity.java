@@ -1,11 +1,14 @@
 package com.myProject.kauan_imovel.domain.pessoa;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,4 +17,7 @@ import java.time.LocalDate;
 public class PessoaProprietarioEntity extends PessoaEntity {
     LocalDate dataCadastro;
     String observacoes;
+    @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<PropriedadeEntity> propriedades = new ArrayList<>();
 }
