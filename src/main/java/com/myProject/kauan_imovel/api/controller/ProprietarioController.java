@@ -5,8 +5,8 @@ import com.myProject.kauan_imovel.application.command.command.pessoa.DeletePesso
 import com.myProject.kauan_imovel.application.command.handler.pessoa.AlterarPessoaProprietariaHandler;
 import com.myProject.kauan_imovel.application.command.handler.pessoa.CadastrarPessoaProprietarioHandler;
 import com.myProject.kauan_imovel.application.command.handler.pessoa.DeletePessoaProprietariaHandler;
-import com.myProject.kauan_imovel.application.query.handler.BuscarPessoaProprietariaPorId;
-import com.myProject.kauan_imovel.application.query.handler.BuscarTodasPessoasProprietariasHandler;
+import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarPessoaProprietariaPorId;
+import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarTodasPessoasProprietariasHandler;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pessoa-proprietario")
-public class PessoaProprietarioController {
+public class ProprietarioController {
     private final CadastrarPessoaProprietarioHandler cadastrarPessoaProprietarioHandler;
     private final AlterarPessoaProprietariaHandler alterarPessoaProprietariaHandler;
     private final BuscarTodasPessoasProprietariasHandler buscarTodasPessoasProprietariasHandler;
     private final BuscarPessoaProprietariaPorId buscarPessoaProprietariaPorId;
     private final DeletePessoaProprietariaHandler deletePessoaProprietariaHandler;
 
-    public PessoaProprietarioController(CadastrarPessoaProprietarioHandler cadastrarPessoaProprietarioHandler, DeletePessoaProprietariaHandler deletePessoaProprietariaHandler, BuscarTodasPessoasProprietariasHandler buscarTodasPessoasProprietariasHandler, AlterarPessoaProprietariaHandler alterarPessoaProprietariaHandler, BuscarPessoaProprietariaPorId buscarPessoaProprietariaPorId) {
+    public ProprietarioController(CadastrarPessoaProprietarioHandler cadastrarPessoaProprietarioHandler, DeletePessoaProprietariaHandler deletePessoaProprietariaHandler, BuscarTodasPessoasProprietariasHandler buscarTodasPessoasProprietariasHandler, AlterarPessoaProprietariaHandler alterarPessoaProprietariaHandler, BuscarPessoaProprietariaPorId buscarPessoaProprietariaPorId) {
         this.cadastrarPessoaProprietarioHandler = cadastrarPessoaProprietarioHandler;
         this.alterarPessoaProprietariaHandler = alterarPessoaProprietariaHandler;
         this.deletePessoaProprietariaHandler = deletePessoaProprietariaHandler;

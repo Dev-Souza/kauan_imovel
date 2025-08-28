@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.application.query.handler;
+package com.myProject.kauan_imovel.application.query.handler.pessoa;
 
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import com.myProject.kauan_imovel.infrastructure.mapper.ProprietarioMapper;
@@ -12,11 +12,9 @@ import java.util.List;
 public class BuscarTodasPessoasProprietariasHandler {
 
     private final PessoaProprietarioRepository repository;
-    private final ProprietarioMapper mapper;
 
     public BuscarTodasPessoasProprietariasHandler(PessoaProprietarioRepository repository, ProprietarioMapper mapper) {
         this.repository = repository;
-        this.mapper = mapper;
     }
 
     public ResponseEntity<List<PessoaProprietarioQueryDTO>> handle() {

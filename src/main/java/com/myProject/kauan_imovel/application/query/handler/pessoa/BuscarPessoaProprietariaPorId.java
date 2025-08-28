@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.application.query.handler;
+package com.myProject.kauan_imovel.application.query.handler.pessoa;
 
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
