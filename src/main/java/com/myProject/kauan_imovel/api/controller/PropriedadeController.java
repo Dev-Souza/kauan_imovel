@@ -2,6 +2,7 @@ package com.myProject.kauan_imovel.api.controller;
 
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.AlterarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.CadastrarPropriedadeHandler;
+import com.myProject.kauan_imovel.application.command.handlers.propriedade.DeletarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.propriedade.CadastrarPropriedadeCommand;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadePorIdQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesQueryHandler;
@@ -20,6 +21,7 @@ public class PropriedadeController {
     private final BuscarTodasPropriedadesQueryHandler buscarTodasPropriedadesQueryHandler;
     private final BuscarPropriedadePorIdQueryHandler buscarPropriedadePorIdQueryHandler;
     private final AlterarPropriedadeHandler alterarPropriedadeHandler;
+    private final DeletarPropriedadeHandler deletarPropriedadeHandler;
 
     // CADASTRAR PROPRIEDADES
     @PostMapping("/cadastrar")
@@ -38,6 +40,12 @@ public class PropriedadeController {
     @PutMapping("/alterar/{id}")
     public ResponseEntity<Void> alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {
         alterarPropriedadeHandler.handle(id, command);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable("id") Long id) {
+        deletarPropriedadeHandler.handle(id);
         return ResponseEntity.ok().build();
     }
 }
