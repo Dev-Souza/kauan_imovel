@@ -1,9 +1,9 @@
 package com.myProject.kauan_imovel.api.controller;
 
-import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaVendedoraCommand;
-import com.myProject.kauan_imovel.application.command.handler.pessoa.AlterarPessoaVendedoraHandler;
-import com.myProject.kauan_imovel.application.command.handler.pessoa.CadastrarPessoaVendedoraHandler;
-import com.myProject.kauan_imovel.application.command.handler.pessoa.DeletePessoaVendedoraHandler;
+import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaVendedoraCommand;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.AlterarPessoaVendedoraHandler;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.CadastrarPessoaVendedoraHandler;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.DeletePessoaVendedoraHandler;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarPessoaVendedoraPorIdHandler;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarTodosVendedoresHandler;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaVendedoraQueryDTO;

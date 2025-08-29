@@ -1,10 +1,10 @@
 package com.myProject.kauan_imovel.api.controller;
 
-import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaProprietarioCommand;
-import com.myProject.kauan_imovel.application.command.command.pessoa.DeletePessoaProprietariaCommand;
-import com.myProject.kauan_imovel.application.command.handler.pessoa.AlterarPessoaProprietariaHandler;
-import com.myProject.kauan_imovel.application.command.handler.pessoa.CadastrarPessoaProprietarioHandler;
-import com.myProject.kauan_imovel.application.command.handler.pessoa.DeletePessoaProprietariaHandler;
+import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaProprietarioCommand;
+import com.myProject.kauan_imovel.application.command.pessoa.DeletePessoaProprietariaCommand;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.AlterarPessoaProprietariaHandler;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.CadastrarPessoaProprietarioHandler;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.DeletePessoaProprietariaHandler;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarPessoaProprietariaPorId;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarTodasPessoasProprietariasHandler;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;

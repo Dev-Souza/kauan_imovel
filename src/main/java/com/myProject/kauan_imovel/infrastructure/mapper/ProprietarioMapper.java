@@ -1,6 +1,6 @@
 package com.myProject.kauan_imovel.infrastructure.mapper;
 
-import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaProprietarioCommand;
+import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaProprietarioCommand;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import org.springframework.stereotype.Component;

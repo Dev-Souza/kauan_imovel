@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.application.command.command.pessoa;
+package com.myProject.kauan_imovel.application.command.pessoa;
 
 import java.time.LocalDate;
 

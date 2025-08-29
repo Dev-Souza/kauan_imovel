@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.application.command.handler.pessoa;
+package com.myProject.kauan_imovel.application.command.handlers.pessoa;
 
 import com.myProject.kauan_imovel.infrastructure.repository.pessoa.PessoaVendedoraRepository;
 import org.springframework.stereotype.Service;

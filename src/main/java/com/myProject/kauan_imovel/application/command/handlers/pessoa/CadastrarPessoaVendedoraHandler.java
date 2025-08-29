@@ -1,6 +1,6 @@
-package com.myProject.kauan_imovel.application.command.handler.pessoa;
+package com.myProject.kauan_imovel.application.command.handlers.pessoa;
 
-import com.myProject.kauan_imovel.application.command.command.pessoa.CadastrarPessoaVendedoraCommand;
+import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaVendedoraCommand;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaVendedoraEntity;
 import com.myProject.kauan_imovel.infrastructure.mapper.VendedorMapper;
 import com.myProject.kauan_imovel.infrastructure.repository.pessoa.PessoaVendedoraRepository;

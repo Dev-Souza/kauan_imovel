@@ -1,4 +1,4 @@
-package com.myProject.kauan_imovel.application.command.command.propriedade;
+package com.myProject.kauan_imovel.application.command.propriedade;
 
 import com.myProject.kauan_imovel.domain.propriedade.TipoPropriedadeEnum;
 
