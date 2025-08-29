@@ -2,7 +2,7 @@ package com.myProject.kauan_imovel.application.query.handler.pessoa;
 
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import com.myProject.kauan_imovel.infrastructure.mapper.ProprietarioMapper;
-import com.myProject.kauan_imovel.infrastructure.repository.pessoa.PessoaProprietarioRepository;
+import com.myProject.kauan_imovel.infrastructure.repository.PessoaProprietarioRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

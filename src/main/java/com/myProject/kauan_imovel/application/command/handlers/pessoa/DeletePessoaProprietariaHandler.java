@@ -1,7 +1,7 @@
 package com.myProject.kauan_imovel.application.command.handlers.pessoa;
 
 import com.myProject.kauan_imovel.application.command.pessoa.DeletePessoaProprietariaCommand;
-import com.myProject.kauan_imovel.infrastructure.repository.pessoa.PessoaProprietarioRepository;
+import com.myProject.kauan_imovel.infrastructure.repository.PessoaProprietarioRepository;
 import org.springframework.stereotype.Service;
 
 @Service

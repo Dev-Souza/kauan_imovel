@@ -3,7 +3,7 @@ package com.myProject.kauan_imovel.application.command.handlers.pessoa;
 import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaProprietarioCommand;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.infrastructure.mapper.ProprietarioMapper;
-import com.myProject.kauan_imovel.infrastructure.repository.pessoa.PessoaProprietarioRepository;
+import com.myProject.kauan_imovel.infrastructure.repository.PessoaProprietarioRepository;
 import org.springframework.stereotype.Service;
 
 @Service
