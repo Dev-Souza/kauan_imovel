@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.domain.propriedade;
 
+import com.myProject.kauan_imovel.domain.endereco.EnderecoEntity;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,4 +29,7 @@ public class PropriedadeEntity {
     @ManyToOne
     @JoinColumn(name = "proprietario_id", nullable = false)
     private PessoaProprietarioEntity proprietario;
+
+    @OneToOne(mappedBy = "propriedade", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, optional = false)
+    private EnderecoEntity endereco;
 }

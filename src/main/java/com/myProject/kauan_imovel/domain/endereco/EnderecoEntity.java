@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.domain.endereco;
 
+import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,4 +19,8 @@ public class EnderecoEntity {
     private String uf;
     private String bairro;
 
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "propriedade_id", nullable = false, unique = true)
+    private PropriedadeEntity propriedade;
 }
