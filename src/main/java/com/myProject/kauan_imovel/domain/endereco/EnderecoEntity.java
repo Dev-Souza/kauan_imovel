@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.domain.endereco;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,5 +22,6 @@ public class EnderecoEntity {
 
     @OneToOne
     @JoinColumn(name = "propriedade_id", nullable = false, unique = true)
+    @JsonBackReference
     private PropriedadeEntity propriedade;
 }

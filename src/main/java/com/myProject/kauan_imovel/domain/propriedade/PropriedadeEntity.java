@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.domain.propriedade;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.myProject.kauan_imovel.domain.endereco.EnderecoEntity;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import jakarta.persistence.*;
