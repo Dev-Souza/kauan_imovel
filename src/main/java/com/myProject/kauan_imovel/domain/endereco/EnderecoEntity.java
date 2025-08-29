@@ -20,7 +20,6 @@ public class EnderecoEntity {
     private String bairro;
 
     @OneToOne
-    @MapsId
     @JoinColumn(name = "propriedade_id", nullable = false, unique = true)
     private PropriedadeEntity propriedade;
 }

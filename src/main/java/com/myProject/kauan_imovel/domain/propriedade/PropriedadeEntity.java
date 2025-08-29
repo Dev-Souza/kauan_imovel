@@ -30,6 +30,6 @@ public class PropriedadeEntity {
     @JoinColumn(name = "proprietario_id", nullable = false)
     private PessoaProprietarioEntity proprietario;
 
-    @OneToOne(mappedBy = "propriedade", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, optional = false)
+    @OneToOne(mappedBy = "propriedade", cascade = CascadeType.ALL, orphanRemoval = true, optional = false)
     private EnderecoEntity endereco;
 }
