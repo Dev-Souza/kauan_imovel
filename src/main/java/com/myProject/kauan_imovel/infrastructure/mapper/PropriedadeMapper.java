@@ -49,5 +49,19 @@ public interface PropriedadeMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "propriedade", ignore = true)
     void updateEndereco(@MappingTarget EnderecoEntity target, CadastrarEnderecoCommand src);
+
+
+    // Copia todos os campos do command para a entidade existente (menos id, proprietário e endereço)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "proprietario", ignore = true) // setamos no handler
+    @Mapping(target = "endereco", ignore = true)     // setamos/tratamos no handler
+    void copy(@MappingTarget PropriedadeEntity target, CadastrarPropriedadeCommand src);
+
+    // PUT/UPDATE: copia campos do endereço
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "propriedade", ignore = true) // back-reference: setamos no handler
+    void copyEndereco(@MappingTarget EnderecoEntity target, CadastrarEnderecoCommand src);
+
+
 }
 
