@@ -32,4 +32,9 @@ public class PropriedadeEntity {
 
     @OneToOne(mappedBy = "propriedade", cascade = CascadeType.ALL, orphanRemoval = true, optional = false)
     private EnderecoEntity endereco;
+
+    public void definirEndereco(EnderecoEntity e) {
+        this.endereco = e;
+        if (e != null) e.setPropriedade(this);
+    }
 }
