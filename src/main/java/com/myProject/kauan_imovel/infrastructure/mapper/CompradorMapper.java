@@ -23,7 +23,7 @@ public class CompradorMapper {
         return entity;
     }
 
-    public PessoaCompradoraQueryDTO toDTO(PessoaCompradoraEntity entity){
+    public static PessoaCompradoraQueryDTO toDTO(PessoaCompradoraEntity entity){
         if ( entity == null ) {
             return null;
         }
