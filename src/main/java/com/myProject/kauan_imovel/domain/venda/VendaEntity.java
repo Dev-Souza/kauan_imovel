@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.domain.venda;
 
+import com.myProject.kauan_imovel.domain.pessoa.PessoaCompradoraEntity;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaVendedoraEntity;
 import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
 import jakarta.persistence.*;
@@ -32,4 +33,8 @@ public class VendaEntity {
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
     private PessoaVendedoraEntity vendedor;
+
+    @ManyToOne
+    @JoinColumn(name = "comprador_id")
+    private PessoaCompradoraEntity comprador;
 }
