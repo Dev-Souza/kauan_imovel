@@ -7,9 +7,7 @@ import com.myProject.kauan_imovel.domain.pessoa.PessoaVendedoraEntity;
 import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
 import com.myProject.kauan_imovel.domain.venda.VendaEntity;
 import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,5 +51,14 @@ public interface VendaMapper {
                         .collect(Collectors.toList());
     }
 
+
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "propriedades", ignore = true) // setamos no handler
+    @Mapping(target = "vendedor", ignore = true)     // setamos no handler
+    @Mapping(target = "comprador", ignore = true)    // setamos no handler
+    @Mapping(target = "proprietario", ignore = true) // setamos no handler
+    void copy(@MappingTarget VendaEntity target, CadastrarVendaCommand source);
 }
 
