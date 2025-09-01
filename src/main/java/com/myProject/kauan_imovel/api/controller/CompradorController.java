@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.api.controller;
 
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.AlterarPessoaCompradoraHandler;
 import com.myProject.kauan_imovel.application.command.handlers.pessoa.CadastrarPessoaCompradoraHandler;
 import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaCompradoraCommand;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarCompradorPorIdHandler;
@@ -18,6 +19,7 @@ public class CompradorController {
     private final CadastrarPessoaCompradoraHandler cadastrarPessoaCompradoraHandler;
     private final BuscarTodosCompradoresHandler buscarTodosCompradoresHandler;
     private final BuscarCompradorPorIdHandler buscarCompradorPorIdHandler;
+    private final AlterarPessoaCompradoraHandler alterarPessoaCompradoraHandler;
 
     @PostMapping("/cadastrar")
     public void cadastrar(@RequestBody CadastrarPessoaCompradoraCommand command) { this.cadastrarPessoaCompradoraHandler.handle(command); }
@@ -27,4 +29,7 @@ public class CompradorController {
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<PessoaCompradoraQueryDTO> listarPorId(@PathVariable("id") Long id) {return ResponseEntity.ok().body(this.buscarCompradorPorIdHandler.handle(id));}
+
+    @PutMapping("/alterar/{id}")
+    public void alterar(@PathVariable("id") Long id, CadastrarPessoaCompradoraCommand command) {this.alterarPessoaCompradoraHandler.handle(id, command);}
 }
