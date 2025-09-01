@@ -12,7 +12,7 @@ public record PessoaCompradoraQueryDTO(
         String email,
         String telefone,
         BigDecimal faixaPrecoDesejada,
-        boolean possuiFinanciamentoAprovado,
+        Boolean possuiFinanciamentoAprovado,
         String instituicaoFinanceira,
         List<VendaEntity> compras
 ) {

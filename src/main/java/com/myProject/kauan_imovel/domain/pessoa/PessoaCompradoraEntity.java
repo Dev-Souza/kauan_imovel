@@ -17,7 +17,7 @@ import java.util.List;
 public class PessoaCompradoraEntity extends PessoaEntity{
 
     private BigDecimal faixaPrecoDesejada;
-    private boolean possuiFinanciamentoAprovado;
+    private Boolean possuiFinanciamentoAprovado;
     private String instituicaoFinanceira;
     @OneToMany(mappedBy = "comprador")
     List<VendaEntity> compras;

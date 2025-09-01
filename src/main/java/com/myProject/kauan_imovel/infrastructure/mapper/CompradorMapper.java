@@ -35,7 +35,7 @@ public class CompradorMapper {
                 entity.getEmail(),
                 entity.getTelefone(),
                 entity.getFaixaPrecoDesejada(),
-                entity.isPossuiFinanciamentoAprovado(),
+                entity.getPossuiFinanciamentoAprovado(),
                 entity.getInstituicaoFinanceira(),
                 entity.getCompras()
         );

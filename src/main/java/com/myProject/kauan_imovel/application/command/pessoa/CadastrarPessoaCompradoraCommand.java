@@ -8,7 +8,7 @@ public record CadastrarPessoaCompradoraCommand(
         String email,
         String telefone,
         BigDecimal faixaPrecoDesejada,
-        boolean possuiFinanciamentoAprovado,
+        Boolean possuiFinanciamentoAprovado,
         String instituicaoFinanceira
 ) {
 }
