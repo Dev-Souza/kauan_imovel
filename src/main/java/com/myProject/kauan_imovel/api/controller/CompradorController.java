@@ -33,7 +33,7 @@ public class CompradorController {
     public ResponseEntity<PessoaCompradoraQueryDTO> listarPorId(@PathVariable("id") Long id) {return ResponseEntity.ok().body(this.buscarCompradorPorIdHandler.handle(id));}
 
     @PutMapping("/alterar/{id}")
-    public void alterar(@PathVariable("id") Long id, CadastrarPessoaCompradoraCommand command) {this.alterarPessoaCompradoraHandler.handle(id, command);}
+    public void alterar(@PathVariable("id") Long id, @RequestBody CadastrarPessoaCompradoraCommand command) {this.alterarPessoaCompradoraHandler.handle(id, command);}
 
     @DeleteMapping("/deletar/{id}")
     public void deletar(@PathVariable("id") Long id) {this.deletePessoaCompradoraHandler.handle(id);}
