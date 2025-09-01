@@ -9,8 +9,10 @@ import com.myProject.kauan_imovel.domain.venda.VendaEntity;
 import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface VendaMapper {
@@ -42,5 +44,14 @@ public interface VendaMapper {
         venda.setPropriedades(propriedades);
         return venda;
     }
+
+    @Named("mapPropriedadesIds")
+    default List<Long> mapPropriedadesIds(List<PropriedadeEntity> propriedades) {
+        return propriedades == null ? null :
+                propriedades.stream()
+                        .map(PropriedadeEntity::getId)
+                        .collect(Collectors.toList());
+    }
+
 }
 
