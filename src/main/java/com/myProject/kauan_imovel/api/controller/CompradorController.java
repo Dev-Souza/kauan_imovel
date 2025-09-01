@@ -2,6 +2,7 @@ package com.myProject.kauan_imovel.api.controller;
 
 import com.myProject.kauan_imovel.application.command.handlers.pessoa.AlterarPessoaCompradoraHandler;
 import com.myProject.kauan_imovel.application.command.handlers.pessoa.CadastrarPessoaCompradoraHandler;
+import com.myProject.kauan_imovel.application.command.handlers.pessoa.DeletePessoaCompradoraHandler;
 import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaCompradoraCommand;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarCompradorPorIdHandler;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarTodosCompradoresHandler;
@@ -20,6 +21,7 @@ public class CompradorController {
     private final BuscarTodosCompradoresHandler buscarTodosCompradoresHandler;
     private final BuscarCompradorPorIdHandler buscarCompradorPorIdHandler;
     private final AlterarPessoaCompradoraHandler alterarPessoaCompradoraHandler;
+    private final DeletePessoaCompradoraHandler deletePessoaCompradoraHandler;
 
     @PostMapping("/cadastrar")
     public void cadastrar(@RequestBody CadastrarPessoaCompradoraCommand command) { this.cadastrarPessoaCompradoraHandler.handle(command); }
@@ -32,4 +34,7 @@ public class CompradorController {
 
     @PutMapping("/alterar/{id}")
     public void alterar(@PathVariable("id") Long id, CadastrarPessoaCompradoraCommand command) {this.alterarPessoaCompradoraHandler.handle(id, command);}
+
+    @DeleteMapping("/deletar/{id}")
+    public void deletar(@PathVariable("id") Long id) {this.deletePessoaCompradoraHandler.handle(id);}
 }
