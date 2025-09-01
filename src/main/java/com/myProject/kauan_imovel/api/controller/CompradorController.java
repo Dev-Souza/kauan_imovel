@@ -4,7 +4,6 @@ import com.myProject.kauan_imovel.application.command.handlers.pessoa.CadastrarP
 import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaCompradoraCommand;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarTodosCompradoresHandler;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaCompradoraQueryDTO;
-import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaProprietarioQueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
