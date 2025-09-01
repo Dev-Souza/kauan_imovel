@@ -1,5 +1,6 @@
 package com.myProject.kauan_imovel.application.query.handler.venda;
 
+import com.myProject.kauan_imovel.domain.venda.VendaEntity;
 import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
 import com.myProject.kauan_imovel.infrastructure.mapper.VendaMapper;
 import com.myProject.kauan_imovel.infrastructure.repository.VendaRepository;
@@ -14,10 +15,7 @@ public class BuscarTodasVendasHandler {
     private final VendaRepository vendaRepository;
     private final VendaMapper vendaMapper;
 
-    public List<VendaQueryDTO> handle() {
-        return vendaRepository.findAll()
-                .stream()
-                .map(vendaMapper::toDTO)
-                .toList();
+    public List<VendaEntity> handle() {
+        return vendaRepository.findAll();
     }
 }
