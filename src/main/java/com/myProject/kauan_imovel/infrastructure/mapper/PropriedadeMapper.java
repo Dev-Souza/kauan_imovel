@@ -16,6 +16,7 @@ public interface PropriedadeMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "proprietario", ignore = true)
     @Mapping(target = "endereco", ignore = true)
+    @Mapping(target = "vendas", ignore = true)
     PropriedadeEntity toEntity(CadastrarPropriedadeCommand cmd);
 
     // Cria Endereco sem id e sem propriedade (serão setados depois)
@@ -42,6 +43,7 @@ public interface PropriedadeMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "proprietario", ignore = true)
     @Mapping(target = "endereco", ignore = true) // endereço atualizado separadamente
+    @Mapping(target = "vendas", ignore = true)
     void update(@MappingTarget PropriedadeEntity target, CadastrarPropriedadeCommand src);
 
     // Atualização parcial do Endereco
@@ -55,6 +57,7 @@ public interface PropriedadeMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "proprietario", ignore = true) // setamos no handler
     @Mapping(target = "endereco", ignore = true)     // setamos/tratamos no handler
+    @Mapping(target = "vendas", ignore = true)
     void copy(@MappingTarget PropriedadeEntity target, CadastrarPropriedadeCommand src);
 
     // PUT/UPDATE: copia campos do endereço
