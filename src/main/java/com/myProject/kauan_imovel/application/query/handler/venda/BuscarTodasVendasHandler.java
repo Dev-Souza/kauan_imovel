@@ -1,12 +1,14 @@
 package com.myProject.kauan_imovel.application.query.handler.venda;
 
 import com.myProject.kauan_imovel.domain.venda.VendaEntity;
+import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
 import com.myProject.kauan_imovel.infrastructure.mapper.VendaMapper;
 import com.myProject.kauan_imovel.infrastructure.repository.VendaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +16,10 @@ public class BuscarTodasVendasHandler {
     private final VendaRepository vendaRepository;
     private final VendaMapper vendaMapper;
 
-    public List<VendaEntity> handle() {
-        return vendaRepository.findAll();
+    public List<VendaQueryDTO> handle() {
+        return vendaRepository.findAll()
+                .stream()
+                .map(entity -> vendaMapper.toDTO(entity))
+                .toList();
     }
 }
