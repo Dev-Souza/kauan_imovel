@@ -7,6 +7,7 @@ import com.myProject.kauan_imovel.application.command.propriedade.CadastrarPropr
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadePorIdQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesQueryHandler;
 import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
+import com.myProject.kauan_imovel.domain.propriedade.dto.PropriedadeQueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,10 +33,10 @@ public class PropriedadeController {
 
     // LISTAR TODAS AS PROPRIEDADES
     @GetMapping("/listar")
-    public ResponseEntity<List<PropriedadeEntity>> listar() { return ResponseEntity.ok().body(buscarTodasPropriedadesQueryHandler.handle());}
+    public ResponseEntity<List<PropriedadeQueryDTO>> listar() { return ResponseEntity.ok().body(buscarTodasPropriedadesQueryHandler.handle());}
 
     @GetMapping("/listar/{id}")
-    public ResponseEntity<PropriedadeEntity> listarPorId(@PathVariable("id") Long id) { return ResponseEntity.ok().body(buscarPropriedadePorIdQueryHandler.handle(id));}
+    public ResponseEntity<PropriedadeQueryDTO> listarPorId(@PathVariable("id") Long id) { return ResponseEntity.ok().body(buscarPropriedadePorIdQueryHandler.handle(id));}
 
     @PutMapping("/alterar/{id}")
     public ResponseEntity<Void> alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {

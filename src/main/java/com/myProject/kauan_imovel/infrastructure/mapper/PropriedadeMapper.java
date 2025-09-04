@@ -4,6 +4,7 @@ import com.myProject.kauan_imovel.application.command.endereco.CadastrarEndereco
 import com.myProject.kauan_imovel.application.command.propriedade.CadastrarPropriedadeCommand;
 import com.myProject.kauan_imovel.domain.endereco.EnderecoEntity;
 import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
+import com.myProject.kauan_imovel.domain.propriedade.dto.PropriedadeQueryDTO;
 import org.mapstruct.*;
 
 @Mapper(
@@ -65,6 +66,19 @@ public interface PropriedadeMapper {
     @Mapping(target = "propriedade", ignore = true) // back-reference: setamos no handler
     void copyEndereco(@MappingTarget EnderecoEntity target, CadastrarEnderecoCommand src);
 
-
+     default PropriedadeQueryDTO toDTO(PropriedadeEntity propriedadeEntity) {
+        return new PropriedadeQueryDTO(
+                propriedadeEntity.getId(),
+                propriedadeEntity.getTitulo(),
+                propriedadeEntity.getTipoPropriedade(),
+                propriedadeEntity.getAreaPropriedade(),
+                propriedadeEntity.getNumeroQuartos(),
+                propriedadeEntity.getNumeroBanheiros(),
+                propriedadeEntity.getPrecoPropriedade(),
+                propriedadeEntity.isDisponivel(),
+                propriedadeEntity.getProprietario().getId(),
+                propriedadeEntity.getEndereco().getId()
+        );
+    }
 }
 
