@@ -17,4 +17,7 @@ public interface PropriedadeRepository extends JpaRepository<PropriedadeEntity, 
 
     @Query("SELECT p FROM PropriedadeEntity p WHERE p.disponivel = true")
     List<PropriedadeEntity> findAllDisponivelQuery();
+
+    @Query("SELECT p FROM PropriedadeEntity p WHERE p.precoPropriedade = (SELECT MAX(p2.precoPropriedade) FROM PropriedadeEntity p2)")
+    PropriedadeEntity findPropriedadeComMaiorPreco();
 }

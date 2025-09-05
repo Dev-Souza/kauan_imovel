@@ -4,6 +4,7 @@ import com.myProject.kauan_imovel.application.command.handlers.propriedade.Alter
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.CadastrarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.DeletarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.propriedade.CadastrarPropriedadeCommand;
+import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadeMaisCaraQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadePorIdQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesDisponiveisQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesQueryHandler;
@@ -22,6 +23,7 @@ public class PropriedadeController {
     private final BuscarTodasPropriedadesQueryHandler buscarTodasPropriedadesQueryHandler;
     private final BuscarPropriedadePorIdQueryHandler buscarPropriedadePorIdQueryHandler;
     private final BuscarTodasPropriedadesDisponiveisQueryHandler buscarTodasPropriedadesDisponiveisHandler;
+    private final BuscarPropriedadeMaisCaraQueryHandler buscarPropriedadeMaisCaraQueryHandler;
     private final AlterarPropriedadeHandler alterarPropriedadeHandler;
     private final DeletarPropriedadeHandler deletarPropriedadeHandler;
 
@@ -41,6 +43,9 @@ public class PropriedadeController {
 
     @GetMapping("/listar/disponivel")
     public ResponseEntity<List<PropriedadeQueryDTO>> listarDisponivel() {return ResponseEntity.ok().body(buscarTodasPropriedadesDisponiveisHandler.handle());}
+
+    @GetMapping("/listar/mais-cara")
+    public PropriedadeQueryDTO listarMaisCara() {return buscarPropriedadeMaisCaraQueryHandler.handle();}
 
     @PutMapping("/alterar/{id}")
     public ResponseEntity<Void> alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {
