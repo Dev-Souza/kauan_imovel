@@ -22,6 +22,7 @@ public class PropriedadeController {
     private final BuscarTodasPropriedadesDisponiveisQueryHandler buscarTodasPropriedadesDisponiveisHandler;
     private final BuscarPropriedadeMaisCaraQueryHandler buscarPropriedadeMaisCaraQueryHandler;
     private final BuscarPropriedadeMaisBarataQueryHandler buscarPropriedadeMaisBarataQueryHandler;
+    private final BuscarPropriedadePorNomeQueryHandler buscarPropriedadePorNomeQueryHandler;
     private final AlterarPropriedadeHandler alterarPropriedadeHandler;
     private final DeletarPropriedadeHandler deletarPropriedadeHandler;
 
@@ -44,6 +45,9 @@ public class PropriedadeController {
 
     @GetMapping("/listar/mais-barata")
     public ResponseEntity<PropriedadeQueryDTO> listarMaisBarato() {return ResponseEntity.ok().body(buscarPropriedadeMaisBarataQueryHandler.handle());}
+
+    @GetMapping("/listar/nome/{nome}")
+    public ResponseEntity<List<PropriedadeQueryDTO>> listarPropriedadesPorNome(@PathVariable("nome") String nome) {return ResponseEntity.ok().body(buscarPropriedadePorNomeQueryHandler.handler(nome));}
 
     @PutMapping("/alterar/{id}")
     public void alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {alterarPropriedadeHandler.handle(id, command);}

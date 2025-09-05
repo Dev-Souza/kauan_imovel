@@ -23,4 +23,7 @@ public interface PropriedadeRepository extends JpaRepository<PropriedadeEntity, 
 
     @Query("SELECT p FROM PropriedadeEntity p WHERE p.precoPropriedade = (SELECT MIN(p2.precoPropriedade) FROM PropriedadeEntity p2)")
     PropriedadeEntity findPropriedadeComMenorPreco();
+
+    @Query("SELECT p FROM PropriedadeEntity p WHERE p.titulo LIKE %:nome%")
+    List<PropriedadeEntity> findByNomePropriedadeContaining(@Param("nome") String nome);
 }
