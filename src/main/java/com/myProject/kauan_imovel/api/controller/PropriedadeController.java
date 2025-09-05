@@ -27,10 +27,7 @@ public class PropriedadeController {
 
     // CADASTRAR PROPRIEDADES
     @PostMapping("/cadastrar")
-    public ResponseEntity<Void> cadastrar(@RequestBody CadastrarPropriedadeCommand command) {
-        cadastrarPropriedadeHandler.handle(command);
-        return ResponseEntity.ok().build();
-    }
+    public void cadastrar(@RequestBody CadastrarPropriedadeCommand command) {cadastrarPropriedadeHandler.handle(command);}
 
     // LISTAR TODAS AS PROPRIEDADES
     @GetMapping("/listar")
@@ -49,14 +46,8 @@ public class PropriedadeController {
     public ResponseEntity<PropriedadeQueryDTO> listarMaisBarato() {return ResponseEntity.ok().body(buscarPropriedadeMaisBarataQueryHandler.handle());}
 
     @PutMapping("/alterar/{id}")
-    public ResponseEntity<Void> alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {
-        alterarPropriedadeHandler.handle(id, command);
-        return ResponseEntity.ok().build();
-    }
+    public void alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {alterarPropriedadeHandler.handle(id, command);}
 
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable("id") Long id) {
-        deletarPropriedadeHandler.handle(id);
-        return ResponseEntity.ok().build();
-    }
+    public void deletar(@PathVariable("id") Long id) {deletarPropriedadeHandler.handle(id);}
 }
