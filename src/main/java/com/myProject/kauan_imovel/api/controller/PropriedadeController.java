@@ -4,10 +4,7 @@ import com.myProject.kauan_imovel.application.command.handlers.propriedade.Alter
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.CadastrarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.DeletarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.propriedade.CadastrarPropriedadeCommand;
-import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadeMaisCaraQueryHandler;
-import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadePorIdQueryHandler;
-import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesDisponiveisQueryHandler;
-import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesQueryHandler;
+import com.myProject.kauan_imovel.application.query.handler.propriedade.*;
 import com.myProject.kauan_imovel.domain.propriedade.dto.PropriedadeQueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +21,7 @@ public class PropriedadeController {
     private final BuscarPropriedadePorIdQueryHandler buscarPropriedadePorIdQueryHandler;
     private final BuscarTodasPropriedadesDisponiveisQueryHandler buscarTodasPropriedadesDisponiveisHandler;
     private final BuscarPropriedadeMaisCaraQueryHandler buscarPropriedadeMaisCaraQueryHandler;
+    private final BuscarPropriedadeMaisBarataQueryHandler buscarPropriedadeMaisBarataQueryHandler;
     private final AlterarPropriedadeHandler alterarPropriedadeHandler;
     private final DeletarPropriedadeHandler deletarPropriedadeHandler;
 
@@ -45,7 +43,10 @@ public class PropriedadeController {
     public ResponseEntity<List<PropriedadeQueryDTO>> listarDisponivel() {return ResponseEntity.ok().body(buscarTodasPropriedadesDisponiveisHandler.handle());}
 
     @GetMapping("/listar/mais-cara")
-    public PropriedadeQueryDTO listarMaisCara() {return buscarPropriedadeMaisCaraQueryHandler.handle();}
+    public ResponseEntity<PropriedadeQueryDTO> listarMaisCara() {return ResponseEntity.ok().body(buscarPropriedadeMaisCaraQueryHandler.handle());}
+
+    @GetMapping("/listar/mais-barata")
+    public ResponseEntity<PropriedadeQueryDTO> listarMaisBarato() {return ResponseEntity.ok().body(buscarPropriedadeMaisBarataQueryHandler.handle());}
 
     @PutMapping("/alterar/{id}")
     public ResponseEntity<Void> alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {

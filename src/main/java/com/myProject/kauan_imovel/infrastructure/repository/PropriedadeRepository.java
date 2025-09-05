@@ -20,4 +20,7 @@ public interface PropriedadeRepository extends JpaRepository<PropriedadeEntity, 
 
     @Query("SELECT p FROM PropriedadeEntity p WHERE p.precoPropriedade = (SELECT MAX(p2.precoPropriedade) FROM PropriedadeEntity p2)")
     PropriedadeEntity findPropriedadeComMaiorPreco();
+
+    @Query("SELECT p FROM PropriedadeEntity p WHERE p.precoPropriedade = (SELECT MIN(p2.precoPropriedade) FROM PropriedadeEntity p2)")
+    PropriedadeEntity findPropriedadeComMenorPreco();
 }
