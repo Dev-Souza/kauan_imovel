@@ -7,9 +7,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface PropriedadeRepository extends JpaRepository<PropriedadeEntity, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE PropriedadeEntity p SET p.disponivel = false WHERE p.id = :idImovel")
     void alterarDiponibilidadeDoImovel(@Param("idImovel") Long idImovel);
+
+    @Query("SELECT p FROM PropriedadeEntity p WHERE p.disponivel = true")
+    List<PropriedadeEntity> findAllDisponivelQuery();
 }

@@ -5,8 +5,8 @@ import com.myProject.kauan_imovel.application.command.handlers.propriedade.Cadas
 import com.myProject.kauan_imovel.application.command.handlers.propriedade.DeletarPropriedadeHandler;
 import com.myProject.kauan_imovel.application.command.propriedade.CadastrarPropriedadeCommand;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarPropriedadePorIdQueryHandler;
+import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesDisponiveisQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.propriedade.BuscarTodasPropriedadesQueryHandler;
-import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
 import com.myProject.kauan_imovel.domain.propriedade.dto.PropriedadeQueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +21,7 @@ public class PropriedadeController {
     private final CadastrarPropriedadeHandler cadastrarPropriedadeHandler;
     private final BuscarTodasPropriedadesQueryHandler buscarTodasPropriedadesQueryHandler;
     private final BuscarPropriedadePorIdQueryHandler buscarPropriedadePorIdQueryHandler;
+    private final BuscarTodasPropriedadesDisponiveisQueryHandler buscarTodasPropriedadesDisponiveisHandler;
     private final AlterarPropriedadeHandler alterarPropriedadeHandler;
     private final DeletarPropriedadeHandler deletarPropriedadeHandler;
 
@@ -37,6 +38,9 @@ public class PropriedadeController {
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<PropriedadeQueryDTO> listarPorId(@PathVariable("id") Long id) { return ResponseEntity.ok().body(buscarPropriedadePorIdQueryHandler.handle(id));}
+
+    @GetMapping("/listar/disponivel")
+    public ResponseEntity<List<PropriedadeQueryDTO>> listarDisponivel() {return ResponseEntity.ok().body(buscarTodasPropriedadesDisponiveisHandler.handle());}
 
     @PutMapping("/alterar/{id}")
     public ResponseEntity<Void> alterar(@PathVariable("id") Long id, @RequestBody CadastrarPropriedadeCommand command) {
