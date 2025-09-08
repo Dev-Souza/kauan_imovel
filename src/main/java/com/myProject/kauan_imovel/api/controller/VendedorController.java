@@ -6,6 +6,9 @@ import com.myProject.kauan_imovel.application.command.handlers.pessoa.CadastrarP
 import com.myProject.kauan_imovel.application.command.handlers.pessoa.DeletePessoaVendedoraHandler;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarPessoaVendedoraPorIdHandler;
 import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarTodosVendedoresHandler;
+import com.myProject.kauan_imovel.application.query.handler.pessoa.BuscarVendedorQueMaisVendeuEmUmTempo;
+import com.myProject.kauan_imovel.domain.pessoa.PessoaVendedoraEntity;
+import com.myProject.kauan_imovel.domain.pessoa.dto.BuscarVendedorQueMaisVendeuEmUmTempoDTO;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaVendedoraQueryDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +23,15 @@ public class VendedorController {
     private final BuscarPessoaVendedoraPorIdHandler buscarPessoaVendedoraPorIdHandler;
     private final AlterarPessoaVendedoraHandler alterarPessoaVendedoraHandler;
     private final DeletePessoaVendedoraHandler deletePessoaVendedoraHandler;
+    private final BuscarVendedorQueMaisVendeuEmUmTempo buscarVendedorQueMaisVendeuEmUmTempo;
 
-    public VendedorController(CadastrarPessoaVendedoraHandler cadastrarPessoaVendedoraHandler, BuscarTodosVendedoresHandler buscarTodosVendedoresHandler, BuscarPessoaVendedoraPorIdHandler buscarPessoaVendedoraPorIdHandler, AlterarPessoaVendedoraHandler alterarPessoaVendedoraHandler, DeletePessoaVendedoraHandler deletePessoaVendedoraHandler) {
+    public VendedorController(CadastrarPessoaVendedoraHandler cadastrarPessoaVendedoraHandler, BuscarTodosVendedoresHandler buscarTodosVendedoresHandler, BuscarPessoaVendedoraPorIdHandler buscarPessoaVendedoraPorIdHandler, AlterarPessoaVendedoraHandler alterarPessoaVendedoraHandler, DeletePessoaVendedoraHandler deletePessoaVendedoraHandler, BuscarVendedorQueMaisVendeuEmUmTempo buscarVendedorQueMaisVendeuEmUmTempo) {
         this.cadastrarPessoaVendedoraHandler = cadastrarPessoaVendedoraHandler;
         this.buscarTodosVendedoresHandler = buscarTodosVendedoresHandler;
         this.buscarPessoaVendedoraPorIdHandler = buscarPessoaVendedoraPorIdHandler;
         this.alterarPessoaVendedoraHandler = alterarPessoaVendedoraHandler;
         this.deletePessoaVendedoraHandler = deletePessoaVendedoraHandler;
+        this.buscarVendedorQueMaisVendeuEmUmTempo = buscarVendedorQueMaisVendeuEmUmTempo;
     }
 
     // CADASTRAR VENDEDOR
@@ -60,4 +65,7 @@ public class VendedorController {
         deletePessoaVendedoraHandler.handle(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/buscar-vendedor-que-mais-vendeu-em-um-tempo")
+    public PessoaVendedoraEntity buscar(@RequestBody BuscarVendedorQueMaisVendeuEmUmTempoDTO filtro) { return buscarVendedorQueMaisVendeuEmUmTempo.handle(filtro.getDataInicial(), filtro.getDataFinal());}
 }
