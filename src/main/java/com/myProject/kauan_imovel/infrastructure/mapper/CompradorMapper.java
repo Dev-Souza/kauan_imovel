@@ -3,7 +3,11 @@ package com.myProject.kauan_imovel.infrastructure.mapper;
 import com.myProject.kauan_imovel.application.command.pessoa.CadastrarPessoaCompradoraCommand;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaCompradoraEntity;
 import com.myProject.kauan_imovel.domain.pessoa.dto.PessoaCompradoraQueryDTO;
+import com.myProject.kauan_imovel.domain.venda.VendaEntity;
+import com.myProject.kauan_imovel.domain.venda.dto.VendaDTO;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class CompradorMapper {
@@ -28,6 +32,12 @@ public class CompradorMapper {
             return null;
         }
 
+
+        List<VendaDTO> comprasDTO = entity.getCompras()
+                .stream()
+                .map(VendaEntity::toDTO)
+                .toList();
+
         return new PessoaCompradoraQueryDTO(
                 entity.getId(),
                 entity.getNome(),
@@ -37,7 +47,7 @@ public class CompradorMapper {
                 entity.getFaixaPrecoDesejada(),
                 entity.getPossuiFinanciamentoAprovado(),
                 entity.getInstituicaoFinanceira(),
-                entity.getCompras()
+                comprasDTO
         );
     }
 }

@@ -1,9 +1,8 @@
 package com.myProject.kauan_imovel.domain.pessoa;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.myProject.kauan_imovel.domain.venda.VendaEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +18,7 @@ public class PessoaCompradoraEntity extends PessoaEntity{
     private BigDecimal faixaPrecoDesejada;
     private Boolean possuiFinanciamentoAprovado;
     private String instituicaoFinanceira;
-    @OneToMany(mappedBy = "comprador")
+    @OneToMany(mappedBy = "comprador", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     List<VendaEntity> compras;
 }

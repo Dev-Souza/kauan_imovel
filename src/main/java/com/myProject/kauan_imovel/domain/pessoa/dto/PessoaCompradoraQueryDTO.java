@@ -1,6 +1,6 @@
 package com.myProject.kauan_imovel.domain.pessoa.dto;
 
-import com.myProject.kauan_imovel.domain.venda.VendaEntity;
+import com.myProject.kauan_imovel.domain.venda.dto.VendaDTO;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,6 +14,6 @@ public record PessoaCompradoraQueryDTO(
         BigDecimal faixaPrecoDesejada,
         Boolean possuiFinanciamentoAprovado,
         String instituicaoFinanceira,
-        List<VendaEntity> compras
+        List<VendaDTO> compras
 ) {
 }

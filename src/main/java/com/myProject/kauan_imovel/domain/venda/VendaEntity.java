@@ -1,9 +1,12 @@
 package com.myProject.kauan_imovel.domain.venda;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaCompradoraEntity;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaProprietarioEntity;
 import com.myProject.kauan_imovel.domain.pessoa.PessoaVendedoraEntity;
 import com.myProject.kauan_imovel.domain.propriedade.PropriedadeEntity;
+import com.myProject.kauan_imovel.domain.venda.dto.VendaDTO;
+import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,9 +40,24 @@ public class VendaEntity {
 
     @ManyToOne
     @JoinColumn(name = "comprador_id")
+    @JsonBackReference
     private PessoaCompradoraEntity comprador;
 
     @ManyToOne
     @JoinColumn(name = "proprietario_id")
     private PessoaProprietarioEntity proprietario;
+
+
+    public VendaDTO toDTO() {
+        return new VendaDTO(
+                this.getId(),
+                this.getDataVenda(),
+                this.getValorVenda(),
+                this.getFormaPagamento(),
+                this.getPropriedades().stream().map(PropriedadeEntity::getId).toList(),
+                this.getVendedor().getId(),
+                this.getProprietario().getId()
+        );
+    }
+
 }
