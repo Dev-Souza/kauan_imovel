@@ -13,4 +13,12 @@ public interface VendaRepository extends JpaRepository<VendaEntity, Long> {
             LIMIT 1
             """, nativeQuery = true)
     VendaEntity buscarMaiorVendaDeUmMes(@Param("mes") Integer mes);
+
+    @Query(value = """
+            SELECT * FROM venda 
+            WHERE EXTRACT(MONTH FROM data_venda) = :mes 
+            ORDER BY valor_venda ASC 
+            LIMIT 1
+            """, nativeQuery = true)
+    VendaEntity buscarMenorVendaDeUmMes(@Param("mes") Integer mes);
 }

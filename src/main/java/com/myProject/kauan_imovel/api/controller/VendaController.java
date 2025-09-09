@@ -5,6 +5,7 @@ import com.myProject.kauan_imovel.application.command.handlers.venda.CadastrarVe
 import com.myProject.kauan_imovel.application.command.handlers.venda.DeletarVendaHandler;
 import com.myProject.kauan_imovel.application.command.venda.CadastrarVendaCommand;
 import com.myProject.kauan_imovel.application.query.handler.venda.BuscarMaiorVendaDeUmMêsQueryHandler;
+import com.myProject.kauan_imovel.application.query.handler.venda.BuscarMenorVendaDeUmMêsQueryHandler;
 import com.myProject.kauan_imovel.application.query.handler.venda.BuscarTodasVendasHandler;
 import com.myProject.kauan_imovel.application.query.handler.venda.BuscarVendaPorId;
 import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
@@ -24,6 +25,7 @@ public class VendaController {
     private final AlterarVendaHandler alterarVendaHandler;
     private final DeletarVendaHandler deletarVendaHandler;
     private final BuscarMaiorVendaDeUmMêsQueryHandler buscarMaiorVendaDeUmMmsQueryHandler;
+    private final BuscarMenorVendaDeUmMêsQueryHandler buscarMenorVendaDeUmMmsQueryHandler;
 
     @PostMapping("/cadastrar")
     public void cadastrarVenda(@RequestBody CadastrarVendaCommand command) {this.cadastrarVendaHandler.handle(command);}
@@ -42,4 +44,7 @@ public class VendaController {
 
     @GetMapping("/listar/maior/{mes}")
     public ResponseEntity<VendaQueryDTO> listarMaiorVenda(@PathVariable("mes") Integer mes) {return ResponseEntity.ok().body(buscarMaiorVendaDeUmMmsQueryHandler.handle(mes));}
+
+    @GetMapping("/listar/menor/{mes}")
+    public ResponseEntity<VendaQueryDTO> listarMenorVenda(@PathVariable("mes") Integer mes) {return ResponseEntity.ok().body(buscarMenorVendaDeUmMmsQueryHandler.handle(mes));}
 }
