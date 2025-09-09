@@ -6,12 +6,12 @@ import com.myProject.kauan_imovel.application.command.handlers.venda.DeletarVend
 import com.myProject.kauan_imovel.application.command.venda.CadastrarVendaCommand;
 import com.myProject.kauan_imovel.application.query.handler.venda.*;
 import com.myProject.kauan_imovel.domain.venda.dto.FaturamentoVendaDTO;
+import com.myProject.kauan_imovel.domain.venda.dto.PrejuizoVendaDTO;
 import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -26,6 +26,7 @@ public class VendaController {
     private final BuscarMaiorVendaDeUmMêsQueryHandler buscarMaiorVendaDeUmMmsQueryHandler;
     private final BuscarMenorVendaDeUmMêsQueryHandler buscarMenorVendaDeUmMmsQueryHandler;
     private final BuscarFaturamentoDeUmMesQueryHandler buscarFaturamentoDeUmMmsQueryHandler;
+    private final BuscarPrejuizosEmVendasQueryHandler buscarPrejuizosEmVendasQueryHandler;
 
     @PostMapping("/cadastrar")
     public void cadastrarVenda(@RequestBody CadastrarVendaCommand command) {this.cadastrarVendaHandler.handle(command);}
@@ -50,4 +51,7 @@ public class VendaController {
 
     @GetMapping("/listar/faturamento/{mes}")
     public ResponseEntity<FaturamentoVendaDTO> listarFaturamentoMensal(@PathVariable("mes") Integer mes) {return ResponseEntity.ok().body(buscarFaturamentoDeUmMmsQueryHandler.handle(mes));}
+
+    @GetMapping("/listar/prejuizo/venda/{vendaId}")
+    public ResponseEntity<PrejuizoVendaDTO> listarSeTevePrejuizoEmUmaVenda(@PathVariable("vendaId") Long id) {return ResponseEntity.ok().body(buscarPrejuizosEmVendasQueryHandler.handle(id));}
 }
