@@ -4,15 +4,14 @@ import com.myProject.kauan_imovel.application.command.handlers.venda.AlterarVend
 import com.myProject.kauan_imovel.application.command.handlers.venda.CadastrarVendaHandler;
 import com.myProject.kauan_imovel.application.command.handlers.venda.DeletarVendaHandler;
 import com.myProject.kauan_imovel.application.command.venda.CadastrarVendaCommand;
-import com.myProject.kauan_imovel.application.query.handler.venda.BuscarMaiorVendaDeUmMêsQueryHandler;
-import com.myProject.kauan_imovel.application.query.handler.venda.BuscarMenorVendaDeUmMêsQueryHandler;
-import com.myProject.kauan_imovel.application.query.handler.venda.BuscarTodasVendasHandler;
-import com.myProject.kauan_imovel.application.query.handler.venda.BuscarVendaPorId;
+import com.myProject.kauan_imovel.application.query.handler.venda.*;
+import com.myProject.kauan_imovel.domain.venda.dto.FaturamentoVendaDTO;
 import com.myProject.kauan_imovel.domain.venda.dto.VendaQueryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -26,6 +25,7 @@ public class VendaController {
     private final DeletarVendaHandler deletarVendaHandler;
     private final BuscarMaiorVendaDeUmMêsQueryHandler buscarMaiorVendaDeUmMmsQueryHandler;
     private final BuscarMenorVendaDeUmMêsQueryHandler buscarMenorVendaDeUmMmsQueryHandler;
+    private final BuscarFaturamentoDeUmMesQueryHandler buscarFaturamentoDeUmMmsQueryHandler;
 
     @PostMapping("/cadastrar")
     public void cadastrarVenda(@RequestBody CadastrarVendaCommand command) {this.cadastrarVendaHandler.handle(command);}
@@ -47,4 +47,7 @@ public class VendaController {
 
     @GetMapping("/listar/menor/{mes}")
     public ResponseEntity<VendaQueryDTO> listarMenorVenda(@PathVariable("mes") Integer mes) {return ResponseEntity.ok().body(buscarMenorVendaDeUmMmsQueryHandler.handle(mes));}
+
+    @GetMapping("/listar/faturamento/{mes}")
+    public ResponseEntity<FaturamentoVendaDTO> listarFaturamentoMensal(@PathVariable("mes") Integer mes) {return ResponseEntity.ok().body(buscarFaturamentoDeUmMmsQueryHandler.handle(mes));}
 }
