@@ -29,4 +29,9 @@ public interface VendaRepository extends JpaRepository<VendaEntity, Long> {
             "       WHERE EXTRACT(MONTH FROM data_venda) = :mes" +
             "", nativeQuery = true)
     FaturamentoVendaDTO buscarFaturamentoDeUmMes(@Param("mes") Integer mes);
+
+    @Query(value = "SELECT SUM(valor_venda) FROM venda", nativeQuery = true)
+    BigDecimal valorDeVendas();
+
+
 }

@@ -27,6 +27,7 @@ public class VendaController {
     private final BuscarMenorVendaDeUmMêsQueryHandler buscarMenorVendaDeUmMmsQueryHandler;
     private final BuscarFaturamentoDeUmMesQueryHandler buscarFaturamentoDeUmMmsQueryHandler;
     private final BuscarPrejuizosEmVendasQueryHandler buscarPrejuizosEmVendasQueryHandler;
+    private final BuscarASomaDeTodosPrejuizosQueryHandler buscarASomaDeTodosPrejuizos;
 
     @PostMapping("/cadastrar")
     public void cadastrarVenda(@RequestBody CadastrarVendaCommand command) {this.cadastrarVendaHandler.handle(command);}
@@ -54,4 +55,7 @@ public class VendaController {
 
     @GetMapping("/listar/prejuizo/venda/{vendaId}")
     public ResponseEntity<PrejuizoVendaDTO> listarSeTevePrejuizoEmUmaVenda(@PathVariable("vendaId") Long id) {return ResponseEntity.ok().body(buscarPrejuizosEmVendasQueryHandler.handle(id));}
+
+    @GetMapping("/listar/prejuizos/vendas")
+    public ResponseEntity<PrejuizoVendaDTO> listarTodosOsPrejuizos(){return ResponseEntity.ok().body(buscarASomaDeTodosPrejuizos.handle());}
 }
